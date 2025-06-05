@@ -56,7 +56,9 @@ function updateCartUI() {
   cartElement.innerHTML = html;
 }
 
-function preparePurchase() {
+function preparePurchase(event) {
+  event?.preventDefault?.(); // Previene comportamiento por defecto (por seguridad)
+
   if (Object.keys(cart.items).length === 0) {
     alert('⚠️ Tu carrito está vacío. Agrega al menos un producto antes de continuar.');
     return;
