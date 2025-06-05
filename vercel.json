@@ -22,12 +22,12 @@
       "dest": "/info.html"
     },
     {
-      "src": "/script.js",
-      "dest": "/script.js"
+      "src": "/checkout.html",
+      "dest": "/checkout.html"
     },
     {
-      "src": "/(.*)",
-      "dest": "/frontlesspad.html"
+      "src": "/script.js",
+      "dest": "/script.js"
     }
   ]
 }
