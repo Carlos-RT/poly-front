@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/frontlesspad.html"
+    },
+    {
+      "src": "/categor.html",
+      "dest": "/categor.html"
+    },
+    {
+      "src": "/techno.html",
+      "dest": "/techno.html"
+    },
+    {
+      "src": "/desing.html",
+      "dest": "/desing.html"
+    },
+    {
+      "src": "/info.html",
+      "dest": "/info.html"
+    },
+    {
+      "src": "/script.js",
+      "dest": "/script.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontlesspad.html"
+    }
+  ]
+}

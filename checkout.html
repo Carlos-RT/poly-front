@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finalizar compra</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .cart-summary {
+      margin-bottom: 2rem;
+    }
+
+    .cart-summary div {
+      margin: 0.3rem 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input,
+    textarea {
+      padding: 0.7rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .back-home-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 999;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-home-button:hover {
+      background-color: #1976D2;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <button onclick="window.location.href='frontlesspad.html'" class="back-home-button">
+    ⬅ Volver al inicio
+  </button>
+
+  <div class="container">
+    <h1>Formulario de compra</h1>
+
+    <div class="cart-summary" id="cart-summary"></div>
+
+    <form id="purchase-form">
+      <input type="text" name="name" placeholder="Nombre del comprador" required>
+      <input type="email" name="email" placeholder="Correo electrónico" required>
+      <input type="tel" name="phone" placeholder="Número telefónico" required>
+      <textarea name="address" rows="3" placeholder="Dirección de destino" required></textarea>
+      <button type="submit">Concluir compra</button>
+    </form>
+  </div>
+
+  <footer>
+    Gracias por tu compra ✨
+  </footer>
+
+  <script>
+    // Mostrar resumen del carrito
+    const cart = JSON.parse(localStorage.getItem("cartData")) || { items: {}, total: 0 };
+    const summary = document.getElementById("cart-summary");
+
+    for (const [name, data] of Object.entries(cart.items)) {
+      const itemDiv = document.createElement("div");
+      itemDiv.textContent = `${name}: ${data.quantity} × $${data.price.toFixed(2)}`;
+      summary.appendChild(itemDiv);
+    }
+
+    const totalDiv = document.createElement("div");
+    totalDiv.innerHTML = `<strong>Total: $${cart.total.toFixed(2)}</strong>`;
+    summary.appendChild(totalDiv);
+
+    // Enviar datos al backend
+    document.getElementById("purchase-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const data = {
+        nombre: this.name.value,
+        email: this.email.value,
+        telefono: this.phone.value,
+        direccion: this.address.value,
+        carrito: cart
+      };
+
+      try {
+        const response = await fetch('http://localhost:3000/api/compra', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          alert('✅ Compra registrada con éxito');
+          localStorage.removeItem("cartData");
+          window.location.href = "frontlesspad.html";
+        } else {
+          alert('❌ Error al registrar la compra');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('❌ Error de conexión con el servidor');
+      }
+    });
+  </script>
+
+
+</body>
+
+</html>

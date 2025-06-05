@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Polygon Controllers</title>
+  <style>
+    body {
+      background-image: url('https://static.vecteezy.com/system/resources/previews/022/460/153/large_2x/a-minimalist-futuristic-desktop-wallpaper-with-geometric-ai-generative-background-free-photo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3f3f3;
+      color: #1f1f1f;
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      padding: 0.7rem 1.2rem;
+      background-color: #e0e0e0;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #1f1f1f;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: #d0d0d0;
+      transform: scale(1.05);
+    }
+
+    .floating-cart {
+      position: fixed;
+      top: 100px;
+      right: 30px;
+      background-color: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      padding: 1rem 1.5rem;
+      font-weight: bold;
+      font-size: 1rem;
+      z-index: 1000;
+      min-width: 200px;
+    }
+
+    .floating-cart .cart-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      display: block;
+      text-align: center;
+    }
+
+    #cart-items {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    .content-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      max-width: 1000px;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .image-section {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+      padding: 1.5rem;
+      margin: 1.5rem auto;
+      max-width: 1000px;
+      gap: 1.5rem;
+    }
+
+    .image-section img {
+      width: 250px;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-description {
+      flex: 1;
+      font-size: 1rem;
+      text-align: left;
+    }
+
+    .add-to-cart {
+      margin-top: 0.5rem;
+      background-color: #cfcfcf;
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .add-to-cart:hover {
+      background-color: #bcbcbc;
+    }
+
+    @media (max-width: 768px) {
+      .image-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .image-description {
+        text-align: center;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .floating-cart {
+        right: 10px;
+        top: 80px;
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      font-size: 0.9rem;
+      color: #555;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+      border-top: 1px solid #ddd;
+      margin-top: 2rem;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- ✅ HEADER con navegación -->
+  <header>
+    <nav class="nav-links">
+      <a href="categor.html">Categorías</a>
+      <a href="techno.html">Tecnología</a>
+      <a href="desing.html">Diseños</a>
+      <a href="info.html">Información</a>
+    </nav>
+  </header>
+
+  <!-- ✅ MAIN con carrito flotante -->
+  <main>
+
+    <div class="floating-cart">
+      <span class="cart-icon">🛒</span>
+      <div id="cart-items"></div>
+      <div><strong>Total: $<span id="cart-total">0.00</span></strong></div>
+      <button onclick="preparePurchase()" class="add-to-cart">Preparar compra</button>
+    </div>
+
+    <div class="content-box">
+      <h1>Polygon Controllers</h1>
+      <p>¡Stract the champion!</p>
+    </div>
+
+    <!-- Sección de Imagen 1 -->
+    <div class="image-section">
+      <img src="https://i.pinimg.com/736x/f3/a7/cd/f3a7cd6816b9446845a60b0ae4cf147c.jpg" alt="Imagen 1">
+      <div class="image-description">
+        <h3>Control Compact Polygon</h3>
+        <p>Estructura sólida, recargable.</p>
+        <p><strong>Precio: $49.99</strong></p>
+        <button class="add-to-cart" onclick="addToCart('Control Compact Polygon', 49.99)">Añadir al carrito</button>
+      </div>
+    </div>
+
+    <!-- Sección de Imagen 2 -->
+    <div class="image-section">
+      <img src="https://sm.ign.com/ign_latam/screenshot/default/wolvv3-02_jwnf.jpg" alt="Imagen 2">
+      <div class="image-description">
+        <h3>Control Expert X</h3>
+        <p>Descripción de la imagen 2.</p>
+        <p><strong>Precio: $45.55</strong></p>
+        <button class="add-to-cart" onclick="addToCart('Control Expert X', 45.55)">Añadir al carrito</button>
+      </div>
+    </div>
+
+    <!-- Sección de Imagen 3 -->
+    <div class="image-section">
+      <img src="https://xim.tech/wp-content/uploads/2022/02/XIM-NEXUS-Front.png" alt="Imagen 3">
+      <div class="image-description">
+        <h3>Control Ultra Slim</h3>
+        <p>Descripción de la imagen 3.</p>
+        <p><strong>Precio: $42.99</strong></p>
+        <button class="add-to-cart" onclick="addToCart('Control Ultra Slim', 42.99)">Añadir al carrito</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>powered by Carlos ;)</p>
+  </footer>
+
+  <!-- ✅ Script externo -->
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Información</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body {
+      background-image: url('https://static.vecteezy.com/system/resources/previews/022/460/153/large_2x/a-minimalist-futuristic-desktop-wallpaper-with-geometric-ai-generative-background-free-photo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #1f1f1f;
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      padding: 0.7rem 1.2rem;
+      background-color: #e0e0e0;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #1f1f1f;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: #d0d0d0;
+      transform: scale(1.05);
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+    }
+
+    .info-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-size: 0.9rem;
+      color: #555;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+      border-top: 1px solid #ddd;
+    }
+
+    .back-home-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 999;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-home-button:hover {
+      background-color: #1976D2;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav-links">
+      <a href="categor.html">Categorías</a>
+      <a href="techno.html">Tecnología</a>
+      <a href="desing.html">Diseños</a>
+      <a href="info.html">Información</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <button onclick="window.location.href='frontlesspad.html'" class="back-home-button">
+      ⬅ Volver al inicio
+    </button>
+
+    <div class="info-box">
+      <h1>¿Qué es lo que hace a un polygon controller especial?</h1>
+      <p>
+        Nuestros controles vienen equipados con palancas analogicas magneto-resistivas, lo que mejora la preicion y
+        durabilidad del control. Además, los cuatro botones principales que vemos en la parte frontal en otros 
+        controles convencionales, son botones mecánicos, y aparte de eso, están ubicados permanentemente en la parte tracera. 
+        Tambien llevan equipado en el interior un sensor giroscopico de 6 ejes, el cual tiene la funcion de asistir a jugador en los
+        movimientos de la camara que requieren mucha mas precisión, como por ejemplo, en juegos de disparos en primera persona.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <p>powered by Carlos ;)</p>
+  </footer>
+</body>
+
+</html>
